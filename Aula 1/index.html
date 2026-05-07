@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow Multi-IA — Criação de Conteúdo para Instagram</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141417;
+      --surface2: #1c1c21;
+      --border: #2a2a32;
+      --accent: #7c6af7;
+      --accent2: #f7a26a;
+      --accent3: #4af7b0;
+      --text: #e8e8f0;
+      --muted: #7a7a8c;
+      --danger: #f76a6a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      padding: 48px 24px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 40px;
+      margin-bottom: 56px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 560px;
+    }
+
+    /* Section headers */
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    /* Workflow diagram */
+    .workflow {
+      margin-bottom: 64px;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 4px;
+      position: relative;
+    }
+
+    .flow-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40px;
+      flex-shrink: 0;
+    }
+
+    .flow-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+
+    .flow-connector {
+      width: 1px;
+      flex: 1;
+      min-height: 24px;
+      background: var(--border);
+      margin: 4px 0;
+    }
+
+    .flow-content {
+      padding: 12px 0 28px;
+      flex: 1;
+    }
+
+    .flow-tool {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .flow-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .flow-multi {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+
+    /* Colors for steps */
+    .s1 {
+      background: rgba(124, 106, 247, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .s2 {
+      background: rgba(247, 162, 106, 0.1);
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .s3 {
+      background: rgba(74, 247, 176, 0.1);
+      border-color: var(--accent3);
+      color: var(--accent3);
+    }
+
+    .s4 {
+      background: rgba(124, 106, 247, 0.15);
+      border-color: #a89df9;
+      color: #a89df9;
+    }
+
+    .s5 {
+      background: rgba(247, 106, 106, 0.1);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .s6 {
+      background: rgba(247, 162, 106, 0.15);
+      border-color: #f9c49d;
+      color: #f9c49d;
+    }
+
+    /* Agent cards */
+    .agents {
+      margin-bottom: 64px;
+    }
+
+    .agent-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .agent-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .agent-meta {
+      flex: 1;
+    }
+
+    .agent-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .agent-role {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .agent-body {
+      padding: 24px;
+    }
+
+    .agent-context {
+      background: var(--surface2);
+      border-left: 3px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .agent-context strong {
+      color: var(--text);
+    }
+
+    .prompt-box {
+      background: #0a0a0c;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .prompt-label {
+      padding: 10px 16px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .prompt-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent3);
+      flex-shrink: 0;
+    }
+
+    .prompt-label-text {
+      flex: 1;
+    }
+
+    .prompt-text {
+      padding: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #c8c8d8;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .prompt-text .var {
+      color: var(--accent2);
+      font-style: italic;
+    }
+
+    .prompt-text .comment {
+      color: var(--muted);
+    }
+
+    .prompt-text .highlight {
+      color: var(--accent3);
+      font-weight: 500;
+    }
+
+    .prompt-text .section {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Tips */
+    .tip {
+      background: rgba(124, 106, 247, 0.08);
+      border: 1px solid rgba(124, 106, 247, 0.25);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #b0a8f5;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    .tip strong {
+      color: var(--accent);
+    }
+
+    /* Output spec */
+    .output-spec {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: var(--surface2);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .output-spec h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .output-spec ul {
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .output-spec ul li::before {
+      content: '→ ';
+      color: var(--accent3);
+    }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    .compare-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-table .crit {
+      color: var(--accent2);
+      font-weight: 500;
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .checklist li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .check-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      padding-top: 2px;
+      flex-shrink: 0;
+      width: 24px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 56px 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Barra de nicho/assunto */
+    .nicho-bar {
+      background: var(--surface);
+      border: 1px solid var(--accent2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nicho-bar-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(247, 162, 106, 0.12);
+      border: 1px solid rgba(247, 162, 106, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent2);
+    }
+
+    .nicho-bar-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nicho-bar-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      flex-shrink: 0;
+    }
+
+    .nicho-input-wrap {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+
+    .nicho-input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .nicho-input::placeholder {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .nicho-input:focus {
+      border-color: var(--accent2);
+    }
+
+    .nicho-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nicho-status.ativo {
+      color: var(--accent3);
+    }
+
+    /* Cards de input adicionais (tema e notebook) */
+    .inputs-section {
+      margin-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .inputs-section-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .input-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .input-card-header {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .input-card-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .input-card-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .input-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      flex: 1;
+    }
+
+    .input-card-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .input-card-status.ativo {
+      color: var(--accent3);
+    }
+
+    .big-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 14px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+      resize: vertical;
+      min-height: 72px;
+      outline: none;
+      display: block;
+    }
+
+    .big-textarea::placeholder {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .card-tema {
+      border: 1px solid rgba(74, 247, 176, 0.35);
+    }
+
+    .card-tema .input-card-icon {
+      background: rgba(74, 247, 176, 0.1);
+      border: 1px solid rgba(74, 247, 176, 0.3);
+      color: var(--accent3);
+    }
+
+    .card-tema .input-card-label {
+      color: var(--accent3);
+    }
+
+    .card-notebook {
+      border: 1px solid rgba(124, 106, 247, 0.35);
+    }
+
+    .card-notebook .input-card-icon {
+      background: rgba(124, 106, 247, 0.1);
+      border: 1px solid rgba(124, 106, 247, 0.3);
+      color: var(--accent);
+    }
+
+    .card-notebook .input-card-label {
+      color: var(--accent);
+    }
+
+    /* Placeholder visual nos prompts */
+    .nicho-val {
+      color: var(--accent2);
+      background: rgba(247, 162, 106, 0.1);
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-style: italic;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nicho-val.preenchido {
+      color: var(--accent3);
+      background: rgba(74, 247, 176, 0.1);
+      font-style: normal;
+    }
+
+    .tema-val {
+      color: var(--accent3);
+      background: rgba(74, 247, 176, 0.1);
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-style: italic;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .tema-val.preenchido {
+      font-style: normal;
+    }
+
+    .notebook-val {
+      color: var(--accent);
+      background: rgba(124, 106, 247, 0.1);
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-style: italic;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .notebook-val.preenchido {
+      color: var(--accent3);
+      background: rgba(74, 247, 176, 0.1);
+      font-style: normal;
+    }
+
+    /* Copy button */
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent3);
+      color: var(--accent3);
+      background: rgba(74, 247, 176, 0.08);
+    }
+
+    .copy-btn.copied {
+      border-color: var(--accent3);
+      color: var(--accent3);
+      background: rgba(74, 247, 176, 0.15);
+    }
+
+    .copy-btn svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="tag">Aula — Produtividade com IA</div>
+      <h1>Workflow Multi-IA<br><span>Criação de Conteúdo</span></h1>
+      <p class="subtitle">Pipeline completo de criação de carrosséis para Instagram usando 6 IAs em cadeia. Inclui
+        prompts prontos para cada agente.</p>
+    </div>
+
+    <!-- Seção de personalização -->
+    <div class="inputs-section">
+      <p class="inputs-section-title">Personalize seus prompts</p>
+
+      <!-- Nicho / Assunto -->
+      <div class="nicho-bar">
+        <div class="nicho-bar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+          </svg>
+        </div>
+        <span class="nicho-bar-label">Seu nicho / assunto</span>
+        <div class="nicho-input-wrap">
+          <input class="nicho-input" id="nicho-input" type="text"
+            placeholder="ex: Inteligência Artificial, Marketing Digital, Fotografia..." autocomplete="off" />
+        </div>
+        <span class="nicho-status" id="nicho-status">preencha para personalizar os prompts</span>
+      </div>
+
+      <!-- Tema escolhido no Perplexity -->
+      <div class="input-card card-tema">
+        <div class="input-card-header">
+          <div class="input-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <span class="input-card-label">Tema escolhido no Perplexity</span>
+          <span class="input-card-status" id="tema-status">preencha após rodar o Perplexity</span>
+        </div>
+        <textarea id="tema-input" class="big-textarea" rows="3"
+          placeholder="Cole aqui o tema que você escolheu no Perplexity — ele será inserido nos prompts do Gemini e do ChatGPT"></textarea>
+      </div>
+
+      <!-- Output do NotebookLM -->
+      <div class="input-card card-notebook">
+        <div class="input-card-header">
+          <div class="input-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          <span class="input-card-label">Output do NotebookLM</span>
+          <span class="input-card-status" id="notebook-status">preencha após rodar o NotebookLM</span>
+        </div>
+        <textarea id="notebook-input" class="big-textarea" rows="6"
+          placeholder="Cole aqui o output completo da síntese do NotebookLM — ele será inserido no prompt do Claude"></textarea>
+      </div>
+    </div>
+
+    <!-- Workflow Visual -->
+    <div class="workflow">
+      <h2>Pipeline Revisado</h2>
+
+      <!-- Step 1 -->
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="flow-dot s1">01</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-multi">
+            <span class="pill s1">Perplexity</span>
+          </div>
+          <div class="flow-desc">Pesquisa de inteligência: notícias, tendências, vídeos em alta no YouTube e Trends do X
+            — filtrando o que é relevante para a audiência</div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="flow-dot s2">02</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-multi">
+            <span class="pill s2">Gemini</span>
+            <span class="pill s2">ChatGPT</span>
+          </div>
+          <div class="flow-desc">Deep Research com ângulos diferentes — Gemini aprofunda o lado técnico/acadêmico,
+            ChatGPT aprofunda o lado comportamental/mercado</div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="flow-dot s3">03</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-multi">
+            <span class="pill s3">NotebookLM</span>
+          </div>
+          <div class="flow-desc">Absorve os 3 outputs (Perplexity + Gemini + ChatGPT) e sintetiza em linguagem simples e
+            acessível para o próximo agente</div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="flow-dot s4">04</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-multi">
+            <span class="pill s4">Claude</span>
+          </div>
+          <div class="flow-desc">Define estratégia editorial → escreve 6 roteiros completos de carrossel → gera 6
+            prompts de imagem → escreve a caption com hashtags e CTA</div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="flow-dot s5">05</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-multi">
+            <span class="pill s5">GPT Images 2.0</span>
+            <span class="pill s5">Nano Banana Pro</span>
+          </div>
+          <div class="flow-desc">Recebem os mesmos prompts gerados pelo Claude — resultados comparados lado a lado
+            (critérios: legibilidade, aderência ao prompt, estética)</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Agents & Prompts -->
+    <div class="agents">
+      <h2>Prompts por Agente</h2>
+
+      <!-- ===== PERPLEXITY ===== -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-meta">
+            <div class="agent-name">01 — Perplexity</div>
+            <div class="agent-role">Agente de Inteligência &amp; Pesquisa</div>
+          </div>
+          <span class="pill s1">Pesquisa Web</span>
+        </div>
+        <div class="agent-body">
+          <div class="agent-context">
+            <strong>Insight:</strong> O Perplexity não é só um buscador — ele rastreia sinais de tendência em múltiplas
+            plataformas simultaneamente, economizando horas de curadoria manual. O output dele vai alimentar todas as
+            outras IAs.
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-label">
+              <span class="prompt-label-text">Prompt — Perplexity (colar no chat ou no campo de busca avançada)</span>
+              <button class="copy-btn" onclick="copiarPrompt(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span class="btn-text">copiar</span>
+              </button>
+            </div>
+            <div class="prompt-text"><span class="section">Aja como um curador de inteligência de mercado especializado
+                em [NICHO/ASSUNTO].</span>
+
+              Quero que você faça uma varredura completa do que está acontecendo AGORA no universo de [NICHO/ASSUNTO].
+              Preciso que você levante:
+
+              <span class="highlight">1. NOTÍCIAS E ACONTECIMENTOS (últimas 48–72h)</span>
+              - Principais lançamentos de produtos
+              - Anúncios de empresas importantes dentro do nicho
+              - Regulações, políticas ou debates sobre o tópico
+
+              <span class="highlight">2. TENDÊNCIAS DO X (TWITTER)</span>
+              - Hashtags em alta relacionadas ao tópico
+              - Tópicos mais debatidos por criadores, pesquisadores e executivos do nicho
+              - Opinião pública: o que as pessoas estão questionando, celebrando ou criticando
+
+              <span class="highlight">3. VÍDEOS EM ALTA NO YOUTUBE</span>
+              - Títulos e canais com maior tração recente sobre o tópico
+              - Qual é o ângulo narrativo que está funcionando (tutorial, polêmica, demo, análise)
+
+              <span class="highlight">4. OPORTUNIDADE DE CONTEÚDO</span>
+              Com base nessa varredura, me indique <span class="var">[1 a 3 temas]</span> que eu deveria comunicar para
+              uma audiência de profissionais de mercado interessados em usar [NICHO/ASSUNTO] no trabalho. Justifique por
+              que cada tema está em alta AGORA.
+
+              <span class="comment">// Formato de saída esperado: seções numeradas, linguagem objetiva, sem rodeios.
+                // Priorize recência — prefiro informação de 24h atrás a análises de 1 semana.</span>
+            </div>
+          </div>
+          <div class="output-spec">
+            <h4>O que você vai copiar para a próxima etapa</h4>
+            <ul>
+              <li>O tema escolhido (1 dos sugeridos)</li>
+              <li>Os principais fatos e acontecimentos levantados</li>
+              <li>As hashtags e sinais de tendência identificados</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== GEMINI ===== -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-meta">
+            <div class="agent-name">02-a — Gemini</div>
+            <div class="agent-role">Deep Research — Ângulo Técnico &amp; Acadêmico</div>
+          </div>
+          <span class="pill s2">Deep Research</span>
+        </div>
+        <div class="agent-body">
+          <div class="agent-context">
+            <strong>Insight:</strong> Ative o modo "Deep Research" do Gemini antes de colar o prompt. Mostre que estamos
+            dando a ele um ângulo específico, não apenas "pesquise sobre X" — isso faz toda a diferença na qualidade.
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-label">
+              <span class="prompt-label-text">Prompt — Gemini Deep Research</span>
+              <button class="copy-btn" onclick="copiarPrompt(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span class="btn-text">copiar</span>
+              </button>
+            </div>
+            <div class="prompt-text"><span class="section">Tema: [COLAR TEMA ESCOLHIDO NO PERPLEXITY]</span>
+
+              Você é um pesquisador sênior especializado em [NICHO/ASSUNTO]. Seu objetivo é construir uma base de
+              conhecimento <span class="highlight">técnica e fundamentada</span> sobre esse tema.
+
+              Faça uma pesquisa profunda e me entregue um artigo estruturado cobrindo:
+
+              <span class="highlight">PARTE 1 — FUNDAMENTOS E CONTEXTO</span>
+              - Como esse tema/área funciona na prática: conceitos, processos e mecanismos centrais
+              - Quais são os principais métodos, abordagens ou referências reconhecidas na área
+              - Fontes técnicas ou acadêmicas recentes que embasam o que se sabe hoje
+
+              <span class="highlight">PARTE 2 — ESTADO ATUAL</span>
+              - O que mudou ou evoluiu nessa área nos últimos 6 meses
+              - Limitações, desafios ou lacunas conhecidas
+              - Principais referências, players ou líderes reconhecidos no tema
+
+              <span class="highlight">PARTE 3 — DADOS E EVIDÊNCIAS</span>
+              - Estatísticas, estudos, métricas de adoção
+              - Casos de uso reais documentados
+              - Comparações quantitativas (quando disponíveis)
+
+              <span class="comment">// Formato: artigo em prosa, com subtítulos claros. Profundidade técnica adequada
+                // para um leitor inteligente mas não especialista. Sem superficialidade.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CHATGPT ===== -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-meta">
+            <div class="agent-name">02b — ChatGPT</div>
+            <div class="agent-role">Deep Research — Ângulo Comportamental &amp; de Mercado</div>
+          </div>
+          <span class="pill s2">Deep Research</span>
+        </div>
+        <div class="agent-body">
+          <div class="agent-context">
+            <strong>Insight:</strong> Mesmo tema, ângulo completamente diferente. Duas IAs pesquisando perspectivas
+            distintas entregam ao NotebookLM matéria-prima mais rica do que qualquer uma isolada — perspectiva técnica +
+            perspectiva humana geram tensões criativas que viram conteúdo diferenciado.
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-label">
+              <span class="prompt-label-text">Prompt — ChatGPT Deep Research</span>
+              <button class="copy-btn" onclick="copiarPrompt(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span class="btn-text">copiar</span>
+              </button>
+            </div>
+            <div class="prompt-text"><span class="section">Tema: [COLAR MESMO TEMA DO PERPLEXITY]</span>
+
+              Você é um analista de comportamento humano e mercado especializado em como as pessoas adotam (e resistem)
+              a mudanças, tendências e novidades dentro de [NICHO/ASSUNTO].
+
+              Faça uma pesquisa profunda e me entregue um artigo estruturado cobrindo o ângulo <span
+                class="highlight">humano, comportamental e de mercado</span> sobre esse tema:
+
+              <span class="highlight">PARTE 1 — IMPACTO NAS PESSOAS E NAS PROFISSÕES</span>
+              - Como esse desenvolvimento está mudando rotinas de trabalho reais
+              - Quais profissões ou funções estão sendo mais afetadas
+              - Relatos, casos e exemplos de adoção no dia a dia
+
+              <span class="highlight">PARTE 2 — PSICOLOGIA DA ADOÇÃO</span>
+              - Por que algumas pessoas adotam rápido e outras resistem
+              - Principais medos, mitos e mal-entendidos sobre o tema
+              - O que líderes de opinião estão dizendo (executivos, educadores, criadores)
+
+              <span class="highlight">PARTE 3 — OPORTUNIDADES DE MERCADO</span>
+              - Onde as empresas e profissionais estão ganhando dinheiro com isso
+              - Nichos e segmentos emergindo ao redor desse tema
+              - O que um profissional de mercado deveria fazer nos próximos 90 dias
+
+              <span class="comment">// Formato: artigo em prosa com subtítulos. Tom analítico mas acessível — como um
+                // artigo da Harvard Business Review em português. Inclua exemplos reais sempre que possível.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== NOTEBOOKLM ===== -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-meta">
+            <div class="agent-name">03 — NotebookLM</div>
+            <div class="agent-role">Sintetizador de Conhecimento</div>
+          </div>
+          <span class="pill s3">Síntese</span>
+        </div>
+        <div class="agent-body">
+          <div class="agent-context">
+            <strong>Insight:</strong> O NotebookLM funciona via upload de fontes, não via prompt direto. Crie um novo
+            notebook → faça upload dos 3 documentos (Perplexity, Gemini, ChatGPT) como arquivos .txt ou .pdf → use a
+            query abaixo no chat do notebook.
+          </div>
+
+          <div class="prompt-box" style="margin-top:12px">
+            <div class="prompt-label">
+              <span class="prompt-label-text">Query — NotebookLM Chat</span>
+              <button class="copy-btn" onclick="copiarPrompt(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span class="btn-text">copiar</span>
+              </button>
+            </div>
+            <div class="prompt-text"><span class="section">Com base em todas as fontes disponíveis neste notebook, quero
+                que você aja como um professor didático explicando esse tema para um profissional de mercado que nunca
+                estudou o assunto a fundo.</span>
+
+              Me entregue uma explicação em 3 camadas:
+
+              <span class="highlight">CAMADA 1 — O QUE É (em 1 parágrafo simples)</span>
+              Explique o tema como se estivesse falando com alguém inteligente mas sem background técnico. Use analogias
+              do cotidiano.
+
+              <span class="highlight">CAMADA 2 — POR QUE IMPORTA AGORA</span>
+              - Os 3 fatos mais importantes que as fontes revelam sobre esse tema hoje
+              - O que mudou recentemente que torna isso urgente
+              - O que um profissional de mercado perde se ignorar isso
+
+              <span class="highlight">CAMADA 3 — IDEIAS E INSIGHTS ACIONÁVEIS</span>
+              - Os 5 insights mais valiosos cruzando todas as fontes
+              - Contradições ou tensões interessantes entre as perspectivas técnica e comportamental
+              - Qual é a "grande sacada" que poucas pessoas estão vendo
+
+              <span class="comment">// Formato: texto corrido com subtítulos claros, linguagem acessível, sem jargão
+                técnico desnecessário.
+                // Este output vai ser usado por outra IA para criar conteúdo — precisa ser rico, claro e bem
+                estruturado.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CLAUDE ===== -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-meta">
+            <div class="agent-name">04 — Claude</div>
+            <div class="agent-role">Estrategista Editorial + Roteirista + Gerador de Prompts</div>
+          </div>
+          <span class="pill s4">Criação de Conteúdo</span>
+        </div>
+        <div class="agent-body">
+          <div class="agent-context">
+            <strong>Insight:</strong> Este é o prompt mais longo e mais importante do workflow. Cole o output completo
+            do NotebookLM no lugar indicado. O Claude vai executar 4 fases em sequência: estratégia editorial → roteiros
+            → prompts de imagem → caption.
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-label">
+              <span class="prompt-label-text">Prompt — Claude (colar no início de uma conversa nova)</span>
+              <button class="copy-btn" onclick="copiarPrompt(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span class="btn-text">copiar</span>
+              </button>
+            </div>
+            <div class="prompt-text"><span class="section">Você é um estrategista de conteúdo e copywriter especializado
+                em Instagram educativo para audiências de profissionais de mercado. Você vai trabalhar em 3 fases nesta
+                conversa.</span>
+
+              <span class="comment">// === CONTEXTO BASE ===</span>
+              Abaixo está um briefing de conteúdo gerado a partir de pesquisa multifonte sobre o tema. Use-o como sua
+              única fonte de verdade:
+
+              ---
+              <span class="var">[COLAR AQUI O OUTPUT COMPLETO DO NOTEBOOKLM]</span>
+              ---
+
+              <span class="comment">// === FASE 1 — ESTRATÉGIA EDITORIAL ===</span>
+              Antes de escrever qualquer roteiro, defina:
+
+              <span class="highlight">A) ÂNGULO PRINCIPAL</span>
+              Qual é a perspectiva única que vai diferenciar esses carrosséis do que já existe no Instagram sobre esse
+              tema?
+
+              <span class="highlight">B) AUDIÊNCIA ESPECÍFICA</span>
+              Descreva o leitor ideal desse conteúdo: cargo, dor principal, nível de conhecimento sobre o tema.
+
+              <span class="highlight">C) GANCHO MESTRE</span>
+              Qual é a frase de abertura que vai fazer alguém parar o scroll? (teste 3 opções)
+
+              <span class="highlight">D) ARCO NARRATIVO</span>
+              Como os 6 carrosséis se conectam? Defina uma lógica de progressão (ex: problema → contexto → solução →
+              casos → riscos → ação).
+
+              ---
+
+              <span class="comment">// === FASE 2 — ROTEIROS DOS 6 CARROSSÉIS ===</span>
+              Para cada carrossel, entregue no formato:
+
+              <span class="highlight">CARROSSEL [N] — [TÍTULO DO SLIDE DE CAPA]</span>
+
+              Slide 1 (Capa): [Título impactante + subtítulo opcional]
+              Slide 2: [Conteúdo — máx. 3 linhas de texto]
+              Slide 3: [Conteúdo — máx. 3 linhas de texto]
+              Slide 4: [Conteúdo — máx. 3 linhas de texto]
+              Slide 5: [Conteúdo — máx. 3 linhas de texto]
+              Slide 6: [Conteúdo — máx. 3 linhas de texto]
+              Slide 7 (CTA): [Call to action claro + pergunta para engajamento]
+
+              Regras dos roteiros:
+              - Máximo 3 linhas de texto por slide (legibilidade mobile)
+              - Linguagem direta, sem jargão
+              - Cada slide precisa ter valor independente (se o usuário parar ali, aprendeu algo)
+              - Use dados e números quando disponíveis no briefing
+
+              ---
+
+              <span class="comment">// === FASE 3 — PROMPTS DE IMAGEM ===</span>
+              Para cada um dos 6 carrosséis, gere 1 prompt de imagem para o slide de capa (Slide 1).
+
+              <span class="highlight">Formato do prompt de imagem:</span>
+              "[Descrição visual que represente o tema do carrossel], estilo design educativo minimalista, paleta de
+              cores consistente com a identidade visual da série, tipografia bold em destaque, sem rosto humano, sem
+              texto gerado pela IA, proporção quadrada 1:1, alta resolução, look profissional para Instagram"
+
+              Adapte os elementos visuais para refletir o tema de cada carrossel. Defina uma paleta de cores para a
+              série toda e mantenha-a consistente nos 6 prompts.
+
+              ---
+
+              <span class="comment">// === FASE 4 — CAPTION ===</span>
+              Por fim, escreva a caption para acompanhar o primeiro carrossel da série:
+              - Primeiras 2 linhas: gancho que aparece antes do "ver mais"
+              - Corpo: expande o valor do carrossel em 3–5 parágrafos curtos
+              - CTA final: pergunta ou ação clara
+              - Hashtags: 10–15 hashtags estratégicas misturando alcance amplo e nicho
+
+              <span class="comment">// Entregue cada fase em sequência, separadas visualmente. Não pule fases.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== IMAGE GENERATORS ===== -->
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-meta">
+            <div class="agent-name">05 — GPT Images 2.0 &amp; Nano Banana Pro</div>
+            <div class="agent-role">Geração &amp; Comparação de Imagens</div>
+          </div>
+          <span class="pill s5">Imagens</span>
+        </div>
+        <div class="agent-body">
+          <div class="agent-context">
+            <strong>Insight:</strong> Cole o mesmo prompt (gerado pelo Claude na Fase 3) nas duas ferramentas sem
+            modificações. Ferramentas diferentes produzem resultados diferentes com o mesmo input — saber avaliar e
+            escolher o melhor output é uma habilidade essencial no uso de IA.
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-label">
+              <span class="prompt-label-text">Critérios de Comparação</span>
+            </div>
+            <div class="prompt-text"><span class="section">Avalie os outputs dos 2 geradores usando esses
+                critérios:</span>
+
+              <span class="highlight">1. ADERÊNCIA AO PROMPT</span>
+              A imagem reflete o que foi pedido ou a IA "alucionou" elementos?
+
+              <span class="highlight">2. LEGIBILIDADE (crítico para carrossel educativo)</span>
+              O espaço para texto está limpo e disponível?
+              O fundo tem contraste suficiente para sobreposição de texto?
+
+              <span class="highlight">3. CONSISTÊNCIA DE SÉRIE</span>
+              Se você gerar os 6 carrosséis com o mesmo gerador, vão parecer parte da mesma série?
+
+              <span class="highlight">4. CUSTO-BENEFÍCIO</span>
+              Quantos créditos/tokens cada um consumiu para esse resultado?
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Handoff Guide -->
+    <div class="divider"></div>
+    <h2>Guia de Handoff entre Agentes</h2>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:24px">O que copiar de cada etapa para alimentar a próxima
+      — siga essa ordem para não perder nenhum output</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>De</th>
+          <th>Para</th>
+          <th>O que copiar</th>
+          <th>Como fazer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="crit">Perplexity</td>
+          <td>Gemini + ChatGPT</td>
+          <td>Tema escolhido + fatos principais</td>
+          <td>Copie e cole no início de cada prompt</td>
+        </tr>
+        <tr>
+          <td class="crit">Gemini</td>
+          <td>NotebookLM</td>
+          <td>Artigo técnico completo</td>
+          <td>Copie → cole num .txt → salve como artigo_gemini.txt</td>
+        </tr>
+        <tr>
+          <td class="crit">ChatGPT</td>
+          <td>NotebookLM</td>
+          <td>Artigo de mercado completo</td>
+          <td>Copie → cole num .txt → salve como artigo_chatgpt.txt</td>
+        </tr>
+        <tr>
+          <td class="crit">Perplexity</td>
+          <td>NotebookLM</td>
+          <td>Pesquisa de inteligência (opcional)</td>
+          <td>Copie → cole num .txt → salve como pesquisa_perplexity.txt</td>
+        </tr>
+        <tr>
+          <td class="crit">NotebookLM</td>
+          <td>Claude</td>
+          <td>Síntese em 3 camadas completa</td>
+          <td>Copie a resposta do chat e cole no campo indicado do prompt Claude</td>
+        </tr>
+        <tr>
+          <td class="crit">Claude</td>
+          <td>GPT Images + Nano Banana</td>
+          <td>6 prompts de imagem (Fase 3)</td>
+          <td>Cole o mesmo prompt nos dois geradores sem modificação → faça download das imagens geradas</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>Workflow Multi-IA — Criação de Conteúdo para Instagram</span>
+      <span>5 agentes · 4 fases · pronto para replicar</span>
+    </div>
+
+  </div>
+
+  <script>
+    var PH_NICHO    = '[NICHO/ASSUNTO]';
+    var PH_TEMA_1   = '[COLAR TEMA ESCOLHIDO NO PERPLEXITY]';
+    var PH_TEMA_2   = '[COLAR MESMO TEMA DO PERPLEXITY]';
+    var PH_NOTEBOOK = '[COLAR AQUI O OUTPUT COMPLETO DO NOTEBOOKLM]';
+
+    // Normaliza + marca todos os placeholders nos .prompt-text
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.prompt-text').forEach(function (el) {
+        var lines = el.innerHTML.split('\n');
+
+        // 1. Remover indentação mínima (exceto primeira linha e linhas vazias)
+        var minIndent = Infinity;
+        lines.forEach(function (line, i) {
+          if (i === 0 || line.trim() === '') return;
+          var m = line.match(/^(\s+)/);
+          if (m) minIndent = Math.min(minIndent, m[1].length);
+        });
+        if (minIndent === Infinity) minIndent = 0;
+        lines = lines.map(function (line, i) {
+          return i === 0 ? line : line.slice(minIndent);
+        });
+
+        // 2. Juntar linhas quebradas no meio de frase pelo formatter
+        var out = [];
+        lines.forEach(function (line) {
+          var cur = line.trim();
+          if (!out.length) { out.push(line); return; }
+          var prev = out[out.length - 1];
+          var prevT = prev.trim();
+          var prevContinua = prevT !== '' && !/[.!?:>\]]$/.test(prevT);
+          var curEhContinuacao = cur !== '' &&
+            !/^[-/]/.test(cur) &&
+            !/^---/.test(cur) &&
+            !/^<[a-z]/.test(cur) &&
+            !/^Slide\s/.test(cur);
+          if (prevContinua && curEhContinuacao) {
+            out[out.length - 1] = prev + ' ' + cur;
+          } else {
+            out.push(line);
+          }
+        });
+
+        // 3. Marcar placeholders com spans interativos
+        var html = out.join('\n').replace(/\n+$/, '');
+        html = html.replace(/\[NICHO\/ASSUNTO\]/g,
+          '<span class="nicho-val">[NICHO/ASSUNTO]</span>');
+        html = html.replace(/\[COLAR TEMA ESCOLHIDO NO PERPLEXITY\]/g,
+          '<span class="tema-val">[COLAR TEMA ESCOLHIDO NO PERPLEXITY]</span>');
+        html = html.replace(/\[COLAR MESMO TEMA DO PERPLEXITY\]/g,
+          '<span class="tema-val">[COLAR MESMO TEMA DO PERPLEXITY]</span>');
+        html = html.replace(/\[COLAR AQUI O OUTPUT COMPLETO DO NOTEBOOKLM\]/g,
+          '<span class="notebook-val">[COLAR AQUI O OUTPUT COMPLETO DO NOTEBOOKLM]</span>');
+        el.innerHTML = html;
+      });
+
+      // --- Conectar inputs ---
+      document.getElementById('nicho-input').addEventListener('input', function () {
+        substituir('nicho-val', this.value.trim(), PH_NICHO,
+          'nicho-status', 'preencha para personalizar os prompts', ' substituições ativas');
+      });
+
+      document.getElementById('tema-input').addEventListener('input', function () {
+        substituir('tema-val', this.value.trim(), null,
+          'tema-status', 'preencha após rodar o Perplexity', ' prompts atualizados');
+        autoResize(this);
+      });
+
+      document.getElementById('notebook-input').addEventListener('input', function () {
+        var val = this.value.trim();
+        var spans = document.querySelectorAll('.notebook-val');
+        var statusEl = document.getElementById('notebook-status');
+        if (val) {
+          var resumo = '✓ Output NotebookLM (' + val.length.toLocaleString('pt-BR') + ' chars)';
+          spans.forEach(function (s) {
+            s.textContent = resumo;
+            s.classList.add('preenchido');
+          });
+          statusEl.textContent = 'inserido no prompt do Claude';
+          statusEl.classList.add('ativo');
+        } else {
+          spans.forEach(function (s) {
+            s.textContent = PH_NOTEBOOK;
+            s.classList.remove('preenchido');
+          });
+          statusEl.textContent = 'preencha após rodar o NotebookLM';
+          statusEl.classList.remove('ativo');
+        }
+        autoResize(this);
+      });
+    });
+
+    function substituir(classe, valor, placeholderVazio, statusId, msgVazia, msgAtiva) {
+      var spans = document.querySelectorAll('.' + classe);
+      var statusEl = document.getElementById(statusId);
+      if (valor) {
+        spans.forEach(function (s) {
+          s.textContent = valor;
+          s.classList.add('preenchido');
+        });
+        statusEl.textContent = spans.length + msgAtiva;
+        statusEl.classList.add('ativo');
+      } else {
+        spans.forEach(function (s) {
+          // Restaura o placeholder original guardado no data-ph ou usa o padrão da classe
+          s.textContent = s.dataset.ph || placeholderVazio || s.textContent;
+          s.classList.remove('preenchido');
+        });
+        statusEl.textContent = msgVazia;
+        statusEl.classList.remove('ativo');
+      }
+    }
+
+    function autoResize(el) {
+      el.style.height = 'auto';
+      el.style.height = el.scrollHeight + 'px';
+    }
+
+    function copiarPrompt(btn) {
+      var box = btn.closest('.prompt-box');
+      var promptText = box.querySelector('.prompt-text');
+
+      // Para .notebook-val: troca temporariamente o resumo pelo conteúdo completo
+      var notebookFull = (document.getElementById('notebook-input').value || '').trim();
+      var notebookSpans = promptText.querySelectorAll('.notebook-val.preenchido');
+      var notebookOriginais = [];
+      notebookSpans.forEach(function (s) {
+        notebookOriginais.push(s.textContent);
+        s.textContent = notebookFull;
+      });
+
+      var texto = promptText.innerText;
+
+      // Restaura visual
+      notebookSpans.forEach(function (s, i) {
+        s.textContent = notebookOriginais[i];
+      });
+
+      navigator.clipboard.writeText(texto).then(function () {
+        feedbackCopiar(btn);
+      }).catch(function () {
+        var range = document.createRange();
+        range.selectNodeContents(promptText);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand('copy');
+        sel.removeAllRanges();
+        feedbackCopiar(btn);
+      });
+    }
+
+    function feedbackCopiar(btn) {
+      var spanTexto = btn.querySelector('.btn-text');
+      btn.classList.add('copied');
+      spanTexto.textContent = 'copiado!';
+      setTimeout(function () {
+        btn.classList.remove('copied');
+        spanTexto.textContent = 'copiar';
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>
