@@ -748,6 +748,7 @@
 
     <!-- Header -->
     <div class="header">
+      <img src="https://cdn.eadplataforma.app/client/edson/upload/others/9716f1542c59c08903ea0317aae0e027_logo-grupo-ninja-cursos-de-inteligencia-artificialpng.png" alt="Grupo Ninja" style="max-height:72px;width:auto;display:block;margin:0 auto 24px;">
       <div class="tag">Aula — Produtividade com IA</div>
       <h1>Workflow Multi-IA<br><span>Criação de Conteúdo</span></h1>
       <p class="subtitle">Pipeline completo de criação de carrosséis para Instagram usando 6 IAs em cadeia. Inclui
@@ -866,8 +867,7 @@
           <div class="flow-multi">
             <span class="pill s4">Claude</span>
           </div>
-          <div class="flow-desc">Define estratégia editorial → escreve 6 roteiros completos de carrossel → gera 6
-            prompts de imagem → escreve a caption com hashtags e CTA</div>
+          <div class="flow-desc">Define estratégia editorial → escreve 1 carrossel completo (capa + 6 slides + CTA) → gera o prompt completo para o Claude Designer → escreve a caption com hashtags e CTA</div>
         </div>
       </div>
 
@@ -879,11 +879,9 @@
         </div>
         <div class="flow-content">
           <div class="flow-multi">
-            <span class="pill s5">GPT Images 2.0</span>
-            <span class="pill s5">Nano Banana Pro</span>
+            <span class="pill s4">Claude</span>
           </div>
-          <div class="flow-desc">Recebem os mesmos prompts gerados pelo Claude — resultados comparados lado a lado
-            (critérios: legibilidade, aderência ao prompt, estética)</div>
+          <div class="flow-desc">Recebe o prompt gerado pelo Claude Sessão 1 → gera 1 artefato HTML com os 7 slides (1080×1080px), gradientes, ícones SVG e formas geométricas → botão "Baixar PNG" em cada slide via html2canvas</div>
         </div>
       </div>
 
@@ -1130,15 +1128,13 @@
         <div class="agent-header">
           <div class="agent-meta">
             <div class="agent-name">04 — Claude</div>
-            <div class="agent-role">Estrategista Editorial + Roteirista + Gerador de Prompts</div>
+            <div class="agent-role">Estrategista Editorial + Roteirista + Formatador para Gamma</div>
           </div>
           <span class="pill s4">Criação de Conteúdo</span>
         </div>
         <div class="agent-body">
           <div class="agent-context">
-            <strong>Insight:</strong> Este é o prompt mais longo e mais importante do workflow. Cole o output completo
-            do NotebookLM no lugar indicado. O Claude vai executar 4 fases em sequência: estratégia editorial → roteiros
-            → prompts de imagem → caption.
+            <strong>Insight:</strong> Este é o prompt mais longo e mais importante do workflow. Cole o output completo do NotebookLM no lugar indicado. O Claude vai executar 4 fases em sequência: estratégia editorial → roteiro do carrossel → outline formatado para o Gamma → caption.
           </div>
           <div class="prompt-box">
             <div class="prompt-label">
@@ -1151,119 +1147,153 @@
                 <span class="btn-text">copiar</span>
               </button>
             </div>
-            <div class="prompt-text"><span class="section">Você é um estrategista de conteúdo e copywriter especializado
-                em Instagram educativo para audiências de profissionais de mercado. Você vai trabalhar em 3 fases nesta
-                conversa.</span>
+            <div class="prompt-text"><span class="section">Você é um estrategista de conteúdo e copywriter especializado em Instagram educativo para audiências de profissionais de mercado. Você vai trabalhar em 4 fases nesta conversa.</span>
 
-              <span class="comment">// === CONTEXTO BASE ===</span>
-              Abaixo está um briefing de conteúdo gerado a partir de pesquisa multifonte sobre o tema. Use-o como sua
-              única fonte de verdade:
+<span class="comment">// === CONTEXTO BASE ===</span>
+Abaixo está um briefing de conteúdo gerado a partir de pesquisa multifonte sobre o tema. Use-o como sua única fonte de verdade:
 
-              ---
-              <span class="var">[COLAR AQUI O OUTPUT COMPLETO DO NOTEBOOKLM]</span>
-              ---
+---
+<span class="notebook-val">[COLAR AQUI O OUTPUT COMPLETO DO NOTEBOOKLM]</span>
+---
 
-              <span class="comment">// === FASE 1 — ESTRATÉGIA EDITORIAL ===</span>
-              Antes de escrever qualquer roteiro, defina:
+<span class="comment">// === FASE 1 — ESTRATÉGIA EDITORIAL ===</span>
+Antes de escrever o carrossel, defina:
 
-              <span class="highlight">A) ÂNGULO PRINCIPAL</span>
-              Qual é a perspectiva única que vai diferenciar esses carrosséis do que já existe no Instagram sobre esse
-              tema?
+<span class="highlight">A) ÂNGULO PRINCIPAL</span>
+Qual é a perspectiva única que vai diferenciar este carrossel do que já existe no Instagram sobre esse tema?
 
-              <span class="highlight">B) AUDIÊNCIA ESPECÍFICA</span>
-              Descreva o leitor ideal desse conteúdo: cargo, dor principal, nível de conhecimento sobre o tema.
+<span class="highlight">B) AUDIÊNCIA ESPECÍFICA</span>
+Descreva o leitor ideal: cargo, dor principal, nível de conhecimento sobre o tema.
 
-              <span class="highlight">C) GANCHO MESTRE</span>
-              Qual é a frase de abertura que vai fazer alguém parar o scroll? (teste 3 opções)
+<span class="highlight">C) GANCHO MESTRE</span>
+Qual é a frase de abertura que vai fazer alguém parar o scroll? (teste 3 opções)
 
-              <span class="highlight">D) ARCO NARRATIVO</span>
-              Como os 6 carrosséis se conectam? Defina uma lógica de progressão (ex: problema → contexto → solução →
-              casos → riscos → ação).
+<span class="highlight">D) ARCO NARRATIVO DO CARROSSEL</span>
+Como os 7 slides se conectam? Defina a lógica de progressão slide a slide (ex: problema → contexto → dado → insight → aplicação → erro comum → CTA).
 
-              ---
+---
 
-              <span class="comment">// === FASE 2 — ROTEIROS DOS 6 CARROSSÉIS ===</span>
-              Para cada carrossel, entregue no formato:
+<span class="comment">// === FASE 2 — ROTEIRO DO CARROSSEL ===</span>
+Escreva 1 carrossel completo com 7 slides no seguinte formato:
 
-              <span class="highlight">CARROSSEL [N] — [TÍTULO DO SLIDE DE CAPA]</span>
+<span class="highlight">Slide 1 — CAPA</span>
+Título principal: [título impactante — máx. 8 palavras]
+Subtítulo: [complemento opcional — máx. 1 linha]
 
-              Slide 1 (Capa): [Título impactante + subtítulo opcional]
-              Slide 2: [Conteúdo — máx. 3 linhas de texto]
-              Slide 3: [Conteúdo — máx. 3 linhas de texto]
-              Slide 4: [Conteúdo — máx. 3 linhas de texto]
-              Slide 5: [Conteúdo — máx. 3 linhas de texto]
-              Slide 6: [Conteúdo — máx. 3 linhas de texto]
-              Slide 7 (CTA): [Call to action claro + pergunta para engajamento]
+<span class="highlight">Slide 2</span>
+[Conteúdo — máx. 3 linhas de texto]
 
-              Regras dos roteiros:
-              - Máximo 3 linhas de texto por slide (legibilidade mobile)
-              - Linguagem direta, sem jargão
-              - Cada slide precisa ter valor independente (se o usuário parar ali, aprendeu algo)
-              - Use dados e números quando disponíveis no briefing
+<span class="highlight">Slide 3</span>
+[Conteúdo — máx. 3 linhas de texto]
 
-              ---
+<span class="highlight">Slide 4</span>
+[Conteúdo — máx. 3 linhas de texto]
 
-              <span class="comment">// === FASE 3 — PROMPTS DE IMAGEM ===</span>
-              Para cada um dos 6 carrosséis, gere 1 prompt de imagem para o slide de capa (Slide 1).
+<span class="highlight">Slide 5</span>
+[Conteúdo — máx. 3 linhas de texto]
 
-              <span class="highlight">Formato do prompt de imagem:</span>
-              "[Descrição visual que represente o tema do carrossel], estilo design educativo minimalista, paleta de
-              cores consistente com a identidade visual da série, tipografia bold em destaque, sem rosto humano, sem
-              texto gerado pela IA, proporção quadrada 1:1, alta resolução, look profissional para Instagram"
+<span class="highlight">Slide 6</span>
+[Conteúdo — máx. 3 linhas de texto]
 
-              Adapte os elementos visuais para refletir o tema de cada carrossel. Defina uma paleta de cores para a
-              série toda e mantenha-a consistente nos 6 prompts.
+<span class="highlight">Slide 7 — CTA</span>
+[Call to action claro + pergunta para engajamento]
 
-              ---
+Regras:
+- Máximo 3 linhas por slide (legibilidade mobile)
+- Linguagem direta, sem jargão
+- Cada slide deve ter valor independente
+- Use dados e números disponíveis no briefing
 
-              <span class="comment">// === FASE 4 — CAPTION ===</span>
-              Por fim, escreva a caption para acompanhar o primeiro carrossel da série:
-              - Primeiras 2 linhas: gancho que aparece antes do "ver mais"
-              - Corpo: expande o valor do carrossel em 3–5 parágrafos curtos
-              - CTA final: pergunta ou ação clara
-              - Hashtags: 10–15 hashtags estratégicas misturando alcance amplo e nicho
+---
 
-              <span class="comment">// Entregue cada fase em sequência, separadas visualmente. Não pule fases.</span>
+<span class="comment">// === FASE 3 — PROMPT PARA O CLAUDE DESIGNER ===</span>
+Monte e entregue um prompt completo e autocontido para ser colado em uma nova sessão do Claude.
+O Claude Sessão 2 vai receber esse prompt e gerar um artefato HTML com os 7 slides prontos para baixar.
+
+<span class="highlight">O prompt que você vai gerar deve conter obrigatoriamente:</span>
+
+<span class="highlight">BLOCO 1 — PAPEL E OBJETIVO</span>
+Instrua o Claude a agir como designer UI especializado em carrosséis para Instagram.
+Objetivo: gerar um único arquivo HTML com os 7 slides do carrossel, prontos para download como PNG.
+
+<span class="highlight">BLOCO 2 — IDENTIDADE VISUAL</span>
+Defina agora a identidade visual para este carrossel e inclua no prompt:
+- Paleta: 3 cores HEX (fundo principal, cor de destaque/acento, cor de texto)
+- Estilo de fundo: gradiente diagonal ou radial entre as cores da paleta
+- Elementos decorativos: formas geométricas (círculos, retângulos, linhas) via CSS puro + ícones SVG inline temáticos por slide
+- Tipografia: system-ui (sem importação externa), bold 700–900 para títulos, 400–500 para corpo
+- Mood visual coerente com o tema do carrossel
+
+<span class="highlight">BLOCO 3 — ESPECIFICAÇÕES TÉCNICAS (inclua literalmente)</span>
+- Cada slide: div de exatamente 1080×1080px, overflow hidden, position relative
+- Layout dos slides: empilhados verticalmente com gap de 40px, centralizados na página
+- Biblioteca: html2canvas carregada via CDN → https://html2canvas.hertzen.com/dist/html2canvas.min.js
+- Botão "⬇ Baixar PNG" abaixo de cada slide (fora do div do slide, não aparece na imagem)
+- Função de download: html2canvas captura o div do slide → gera PNG → download automático com nome "slide-N.png"
+- Zero dependências externas além do html2canvas CDN
+- Todo o CSS inline ou em tag style no head
+
+<span class="highlight">BLOCO 4 — CONTEÚDO DOS 7 SLIDES</span>
+Copie o roteiro completo da Fase 2 e inclua aqui, slide a slide, com o texto exato de cada um.
+Para cada slide, especifique também o ícone SVG temático sugerido (descreva o ícone, o Claude vai criar o SVG).
+
+<span class="comment">// Entregue o prompt completo em um bloco de código markdown (```).
+// O usuário vai copiar esse bloco e colar diretamente em uma nova sessão do Claude.
+// Não resuma — o prompt deve ser autocontido e funcionar sem contexto adicional.</span>
+
+---
+
+<span class="comment">// === FASE 4 — CAPTION ===</span>
+Escreva a caption para acompanhar este carrossel:
+- Primeiras 2 linhas: gancho que aparece antes do "ver mais"
+- Corpo: expande o valor do carrossel em 3–5 parágrafos curtos
+- CTA final: pergunta ou ação clara
+- Hashtags: 10–15 hashtags estratégicas misturando alcance amplo e nicho
+
+<span class="comment">// Entregue cada fase em sequência, separadas visualmente. Não pule fases.</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ===== IMAGE GENERATORS ===== -->
+      <!-- ===== CLAUDE DESIGNER ===== -->
       <div class="agent-card">
         <div class="agent-header">
           <div class="agent-meta">
-            <div class="agent-name">05 — GPT Images 2.0 &amp; Nano Banana Pro</div>
-            <div class="agent-role">Geração &amp; Comparação de Imagens</div>
+            <div class="agent-name">05 — Claude (nova sessão)</div>
+            <div class="agent-role">Designer de Carrossel via Artefato HTML</div>
           </div>
-          <span class="pill s5">Imagens</span>
+          <span class="pill s4">Design HTML</span>
         </div>
         <div class="agent-body">
           <div class="agent-context">
-            <strong>Insight:</strong> Cole o mesmo prompt (gerado pelo Claude na Fase 3) nas duas ferramentas sem
-            modificações. Ferramentas diferentes produzem resultados diferentes com o mesmo input — saber avaliar e
-            escolher o melhor output é uma habilidade essencial no uso de IA.
+            <strong>Como funciona:</strong> O Claude Sessão 1 (Step 04) já gerou na Fase 3 um prompt completo e autocontido. Você só precisa copiar esse bloco e colar em uma nova sessão do Claude. O Claude Sessão 2 vai gerar um único arquivo HTML com os 7 slides — gradientes, formas geométricas, ícones SVG, tudo consistente — e um botão "Baixar PNG" em cada slide. Sem ferramentas externas, sem prompt manual por slide.
           </div>
           <div class="prompt-box">
             <div class="prompt-label">
-              <span class="prompt-label-text">Critérios de Comparação</span>
+              <span class="prompt-label-text">Passo a passo — como usar</span>
             </div>
-            <div class="prompt-text"><span class="section">Avalie os outputs dos 2 geradores usando esses
-                critérios:</span>
+            <div class="prompt-text"><span class="section">Como gerar os slides com o Claude:</span>
 
-              <span class="highlight">1. ADERÊNCIA AO PROMPT</span>
-              A imagem reflete o que foi pedido ou a IA "alucionou" elementos?
+<span class="highlight">PASSO 1 — Copie o output da Fase 3 do Claude Sessão 1</span>
+O bloco gerado na Fase 3 já é o prompt completo e pronto.
+Copie tudo — role, identidade visual, specs técnicas e conteúdo dos slides.
 
-              <span class="highlight">2. LEGIBILIDADE (crítico para carrossel educativo)</span>
-              O espaço para texto está limpo e disponível?
-              O fundo tem contraste suficiente para sobreposição de texto?
+<span class="highlight">PASSO 2 — Abra uma nova sessão do Claude</span>
+Acesse claude.ai/new e use o Claude Sonnet ou superior.
+Não cole na mesma sessão — o Claude precisa começar sem contexto anterior.
 
-              <span class="highlight">3. CONSISTÊNCIA DE SÉRIE</span>
-              Se você gerar os 6 carrosséis com o mesmo gerador, vão parecer parte da mesma série?
+<span class="highlight">PASSO 3 — Cole o prompt e aguarde</span>
+Cole o bloco e envie. O Claude vai gerar o artefato HTML completo.
+Se o código for muito longo, ele pode entregar em 2 respostas — peça "continue" se parar no meio.
 
-              <span class="highlight">4. CUSTO-BENEFÍCIO</span>
-              Quantos créditos/tokens cada um consumiu para esse resultado?
-            </div>
+<span class="highlight">PASSO 4 — Abra o artefato e baixe os slides</span>
+No preview do artefato, clique em "Baixar PNG" abaixo de cada slide.
+Os arquivos saem nomeados slide-1.png a slide-7.png em 1080×1080px, prontos para o Instagram.
+
+<span class="comment">// Se um slide ficou com layout quebrado ou texto cortado:
+// Na mesma sessão, peça: "Corrija o slide N — [descreva o problema]"
+// O Claude ajusta sem precisar regerar os outros.</span></div>
           </div>
         </div>
       </div>
@@ -1318,9 +1348,9 @@
         </tr>
         <tr>
           <td class="crit">Claude</td>
-          <td>GPT Images + Nano Banana</td>
-          <td>6 prompts de imagem (Fase 3)</td>
-          <td>Cole o mesmo prompt nos dois geradores sem modificação → faça download das imagens geradas</td>
+          <td>Claude (nova sessão)</td>
+          <td>Prompt de design completo (Fase 3)</td>
+          <td>Copie o bloco da Fase 3 → cole em nova sessão do Claude → aguarde o artefato HTML → baixe cada slide como PNG</td>
         </tr>
       </tbody>
     </table>
@@ -1328,7 +1358,7 @@
     <!-- Footer -->
     <div class="footer">
       <span>Workflow Multi-IA — Criação de Conteúdo para Instagram</span>
-      <span>5 agentes · 4 fases · pronto para replicar</span>
+      <span>5 agentes · 4 fases · slides prontos para baixar</span>
     </div>
 
   </div>
